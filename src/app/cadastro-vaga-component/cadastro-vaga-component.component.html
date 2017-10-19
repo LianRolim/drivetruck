@@ -1,0 +1,128 @@
+<ng-progress [speed]="'30'" [color]="'#2DBE61'"></ng-progress>
+<form #formulario="ngForm">
+        <div class="text-center">
+           <img src="./assets/imagens/DriveTruckIcon.png" width = "150px" class="img-responsive" style="margin:0 auto;" />
+           <br /><br /><small class="text-muted">Você está a cinco minutos de anunciar essa vaga para todo o Brasil</small>
+        </div>
+        <hr>
+        <div class="row">
+           <div class="col-6">
+              <div class="form-group">
+                 <label>Nome da vaga</label>
+                 <input [(ngModel)]="vaga.nome" name="nomeVaga" aria-describedby="nomeVaga" type="text" class="form-control" placeholder="ex: Vaga motorista caminhão toco" required>
+              </div>
+           </div>
+           <div class="col-6">
+            <div class="form-group">
+               <label>Carteira assinada?</label>
+               <select [(ngModel)]="vaga.carteiraAssinada" class="form-control" name="carteiraAssinada" aria-describedby="carteiraAssinada" required>
+                  <option>Sim</option>
+                  <option>Não</option>
+               </select>
+            </div>
+            </div>
+           <div class="col-12">
+              <div class="form-group">
+                <label>Descrição da oportunidade</label>
+                <textarea [(ngModel)]="vaga.descricao" class="form-control" name="descricao" rows="5" placeholder="Insira aqui a descrição da sua vaga"></textarea>
+              </div>
+           </div>
+        </div>
+        <div class="row">
+           <div class="col-6">
+            <label>Tempo de trabalho</label>
+            <select [(ngModel)]="vaga.tempoDeTrabalho" class="form-control" name="tempoDeTrabalho" aria-describedby="tempoDeTrabalho" required>
+                <option>Integral</option>
+                <option>Algumas Viagens</option>
+            </select>
+           </div>
+           <div class="col-6">
+              <div class="form-group">
+                 <label>Cidade/ES</label>
+                 <input [(ngModel)]="vaga.cidadeEstado" name="cidadeEstado" aria-describedby="cidadeEstado" type="text" class="form-control" placeholder="ex: Porto Alegre, RS" required>
+              </div>
+           </div>
+        </div>
+        <div class="row">
+                <div class="col-12">
+                    <div class="form-group">
+                       <label>Salario</label>
+                       <input [(ngModel)]="vaga.salario" name="salario" aria-describedby="salario" type="text" class="form-control" placeholder="ex: $4.140,00">
+                    </div>
+                </div>
+            </div>
+        <div class="row">
+            <div class="col-6" *ngIf="vaga.tempoDeTrabalho == 'Algumas Viagens' ">
+                <div class="form-group">
+                   <label>Quantidade de viagens</label>
+                   <input [(ngModel)]="vaga.numeroViagens" name="numeroViagens" aria-describedby="numeroViagens" type="text" class="form-control" placeholder="5 Viagens" required>
+                </div>
+             </div>
+             <div class="col-6">
+                <div class="form-group">
+                   <label>Jornada de trabalho</label>
+                   <input [(ngModel)]="vaga.jornadaTrabalho" name="jornadaTrabalho" aria-describedby="jornadaTrabalho" type="text" class="form-control" placeholder="44 horas semanais">
+                </div>
+             </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6" >
+               <div class="form-group">
+                  <label>Beneficios</label>
+                  <input type="text" name="beneficios" class="form-control" 
+                     placeholder="ex: Plano de saúde" #inputBeneficio>
+               </div>
+               <button type="button" (click)="addBeneficio(inputBeneficio.value)" class="btn btn-outline-primary">Add Beneficio</button> 
+            </div>
+            <div class="col-sm-6" *ngIf="arrBeneficios?.length > 0">
+               <ol class="custom-counter">
+                  <small class="text-muted">Beneficios</small>
+                  <li *ngFor="let bene of arrBeneficios; let i = index" >
+                     {{ bene }}
+                  </li>
+               </ol>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-sm-6" >
+               <div class="form-group">
+                  <label>Atividades</label>
+                  <input type="text" name="atividades" class="form-control" 
+                     placeholder="ex: dirigir carreta, amarrar carga" #inputAtividades>
+               </div>
+               <button type="button" (click)="addAtividade(inputAtividades.value)" class="btn btn-outline-primary">Add Beneficio</button> 
+            </div>
+            <div class="col-sm-6" *ngIf="arrAtividades?.length > 0">
+               <ol class="custom-counter">
+                  <small class="text-muted">Atividades</small>
+                  <li *ngFor="let atv of arrAtividades; let i = index" >
+                     {{ atv }}
+                  </li>
+               </ol>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-sm-6" >
+               <div class="form-group">
+                  <label>Requisitos</label>
+                  <input type="text" name="requisitos" class="form-control" 
+                     placeholder="ex: Carteira D, Curso periculosidade" #inputRequisito>
+               </div>
+               <button type="button" (click)="addRequisito(inputRequisito.value)" class="btn btn-outline-primary">Add Beneficio</button> 
+            </div>
+            <div class="col-sm-6" *ngIf="arrRequisitos?.length > 0">
+               <ol class="custom-counter">
+                  <small class="text-muted">Requisitos</small>
+                  <li *ngFor="let req of arrRequisitos; let i = index" >
+                     {{ req }}
+                  </li>
+               </ol>
+            </div>
+        </div>
+        <br />
+        <!-- <button (click)="cadastrarNovoAnuncio()" type="submit" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" class="btn btn-lg btn-block btn-outline-success my-5 my-sm-0">Anunciar veiculo</button> -->
+        <button [disabled]="!formulario.valid" (click)="cadastrarVaga()" type="submit" class="btn btn-lg btn-block btn-outline-success my-5 my-sm-0">Anunciar veiculo</button>
+</form>
+<br />

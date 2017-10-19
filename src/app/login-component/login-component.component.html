@@ -1,0 +1,28 @@
+<form>
+   <div class="text-center">
+      <img src="./assets/imagens/DriveTruckIcon.png" width = "150px" class="img-responsive" style="margin:0 auto;" />
+   </div>
+   <hr>
+   <div class="form-group has-success row">
+      <div class="col-sm-12">
+         <input [(ngModel)]="user" name="um" id="usuario" type="text" class="form-control form-control-lg" style="text-align: center" id="inputEmail3" placeholder="Email">
+      </div>
+   </div>
+   <div class="form-group row">
+      <div class="col-sm-12">
+         <input [(ngModel)]="senha" name="dois" id="senha" type="password" class="form-control form-control-lg" style="text-align: center" id="inputPassword3" placeholder="Password">
+      </div>
+   </div>
+   <div class="text-center">
+      <div class="form-group row">
+         <div class="offset-sm-5 col-sm-12">
+            <button type="submit" class="btn btn-lg btn-block btn-outline-success my-5 my-sm-0" (click)="fazerLogin()">Entrar</button>
+            <br />
+            <small class="text-muted">ou</small>
+            <br />
+            <button routerLink="/cadastro" type="button" class="btn btn-link">Cadastre-se</button><br />
+            <button routerLink="/recuperar_dados" type="button" class="btn btn-link">Recuperar meus dados</button>
+         </div>
+      </div>
+   </div>
+</form>

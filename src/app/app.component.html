@@ -1,20 +1,62 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!
-  </h1>
-  <img width="300" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOS4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAyNTAgMjUwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyNTAgMjUwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPg0KCS5zdDB7ZmlsbDojREQwMDMxO30NCgkuc3Qxe2ZpbGw6I0MzMDAyRjt9DQoJLnN0MntmaWxsOiNGRkZGRkY7fQ0KPC9zdHlsZT4NCjxnPg0KCTxwb2x5Z29uIGNsYXNzPSJzdDAiIHBvaW50cz0iMTI1LDMwIDEyNSwzMCAxMjUsMzAgMzEuOSw2My4yIDQ2LjEsMTg2LjMgMTI1LDIzMCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAJIi8+DQoJPHBvbHlnb24gY2xhc3M9InN0MSIgcG9pbnRzPSIxMjUsMzAgMTI1LDUyLjIgMTI1LDUyLjEgMTI1LDE1My40IDEyNSwxNTMuNCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAxMjUsMzAgCSIvPg0KCTxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0xMjUsNTIuMUw2Ni44LDE4Mi42aDBoMjEuN2gwbDExLjctMjkuMmg0OS40bDExLjcsMjkuMmgwaDIxLjdoMEwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMQ0KCQlMMTI1LDUyLjF6IE0xNDIsMTM1LjRIMTA4bDE3LTQwLjlMMTQyLDEzNS40eiIvPg0KPC9nPg0KPC9zdmc+DQo=">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="https://blog.angular.io//">Angular blog</a></h2>
-  </li>
-</ul>
-
+<div class="riscoVerde"></div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #333333;" >
+        <!-- <img src="./assets/imagens/DriveTruckIcon.png" width="80" height="70" class="d-inline-block align-top" alt=""> -->
+        <img src="./assets/imagens/DriveTruckIcon.png" width = "80" height= "70" class="d-inline-block align-top img-thumbnail rounded-circle" />
+        <a class="navbar-brand" id="dt" href="#"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"  aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+       <ul class="navbar-nav mr-auto">
+          <li class="nav-item active" routerLinkActive="active">
+              <a routerLink="/inicio" class="nav-link" href="#">Vagas motorista <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+             <a routerLink="/caminhoes" class="nav-link" href="#">Trucados a venda</a>
+          </li>
+          <li *ngIf="mostraMenu" class="nav-item" routerLinkActive="active">
+             <a routerLink="/mensagem" class="nav-link" href="#">Mensagens <span class="badge badge-danger">New</span></a>
+          </li>
+          <li *ngIf="mostraMenu" class="nav-item" routerLinkActive="active">
+             <a routerLink="/profile" class="nav-link" href="#">Meu Perfil</a>
+          </li>
+          <li class="nav-item dropdown" *ngIf="mostraMenu">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Anunciar
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a routerLink="/cadastrar_vaga" routerLinkActive="active" class="dropdown-item" href="#">Vaga</a>
+              <a routerLink="/cadastrar_anuncio" routerLinkActive="active" class="dropdown-item" href="#">Veiculo</a>
+            </div>
+          </li>
+       </ul>
+       <form *ngIf="!mostraMenu" class="form-inline my-2 my-lg-2">
+          <button routerLink="/login" class="btn btn-outline-success my-2 my-sm-0" type="submit">Entrar</button>
+       </form>
+       <form *ngIf="mostraMenu" class="form-inline my-2 my-lg-2">
+          <button class="btn btn-outline-success my-2 my-sm-0" (click)="EncerrarSessao()" type="submit">Sair</button>
+       </form>
+    </div>
+ </nav>
+ <br />
+ <div class="container-fluid">
+    <div *ngIf="!mostraMenu" class="alert alert-success" role="alert">
+       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+       </button>
+       <h4 class="alert-heading">Cadastre-se é gratuito</h4>
+       <p>Não perca tempo, registre-se agora mesmo! Membros registrados tem acesso a muito mais conteúdos, além de poder participar de conversas, se candidatar a vagas e visualizar o catalogo completo de caminhões à venda. Não perca essa oportunidade!</p>
+       <div class ="text-center">
+          <button routerLink="/cadastro" class="btn btn-outline-success my-2 my-sm-0" type="submit">Cadastre-se</button>
+       </div>
+    </div>
+    <router-outlet></router-outlet>
+ </div>
+ <br />
+ <footer class="footer">
+    <div class="container">
+       <div class ="text-center">
+          <span class="text-muted"><h6 class="site__title">© 2017 DriveTruck.com.br</h6></span>
+       </div>
+    </div>
+ </footer>

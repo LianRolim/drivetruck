@@ -1,0 +1,223 @@
+<div class="input-group">
+    <input type="text" class="search-query" placeholder="Busca rápida" (keyup)="onKey($event)">
+</div><br />
+<ol class="breadcrumb">
+<li class="breadcrumb-item">Veículos à venda</li>
+</ol>
+<div class="row">
+  <div class="col-sm-4" *ngFor="let caminhaoAnunc of listCaminhoes; let i = index">
+    <div class="card text-center">
+       <div class="card-header" *ngIf="caminhaoAnunc.primeiroNome != 'null'">
+          {{ caminhaoAnunc.primeiroNome }} {{ caminhaoAnunc.segundoNome }}
+       </div>
+       <div class="card-header" *ngIf="caminhaoAnunc.nomeEmpresa != 'null'">
+          {{ caminhaoAnunc.nomeEmpresa }}
+       </div>
+       <div class="card-block">
+          <br />
+          <h6 class="card-title"><em>{{ caminhaoAnunc.nomeVeiculo }}</em></h6>
+          <img src="{{caminhaoAnunc.img01}}" class="card-img-top img-fluid w-150" />
+          <p class="card-text small">
+             <br />
+             <b>Modelo:</b> {{ caminhaoAnunc.modelo }}
+             <br />
+             <b>Ano/modelo: </b> {{ caminhaoAnunc.anoModelo }}
+             <br />
+             <b>Preço: </b> {{ caminhaoAnunc.valor }}
+             <br />
+             <b>Cidade/Estado: </b> {{ caminhaoAnunc.cidadeEstado }}
+             <br />
+             {{ caminhaoAnunc.tpoAnuncio }}
+          </p>
+          <a href="#" [routerLink]="['/venda_detalhe', caminhaoAnunc.idVendas]" class="btn btn-outline-success">Detalhes</a>
+          <br /><br />    
+       </div>
+       <div class="card-footer text-muted small">
+          Publicado há 2 dias
+       </div>
+    </div><br />
+  </div>
+</div>
+<br />
+<br />
+<!-- <div class="input-group">
+        <input type="text" class="search-query" placeholder="Busca rápida" (keyup)="onKey($event)">
+</div><br />
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">Veículos à venda</li>
+</ol>
+<div class="row">
+   <div class="col-sm-4">
+      <div class="card text-center">
+         <div class="card-header">
+            Publicado por Lian Rolim
+         </div>
+         <div class="card-block">
+            <br />
+            <h6 class="card-title"><em>Volvo FM 370</em></h6>
+            <img src="./assets/imagens/caminhoes/caminhao4.jpg" class="card-img-top img-fluid w-100" />
+            <p class="card-text small">
+               <b>Modelo:</b> 
+               <br />
+               <b>Ano/modelo: </b>2011/2012
+               <br />
+               <b>Preço: </b>$190.000,00
+               <br />
+               <b>Cidade/Estado: </b>Porto Alegre, RS
+               <br />
+               Anúncio de Revenda
+            </p>
+            <a href="#" routerLink="/venda_detalhe" class="btn btn-outline-success">Detalhes</a>
+            <br /><br />    
+         </div>
+         <div class="card-footer text-muted small">
+            Publicado há 2 dias
+         </div>
+      </div>
+   </div>
+   <div class="col-sm-4">
+    <div class="card text-center">
+       <div class="card-header">
+          Publicado por Lian Rolim
+       </div>
+       <div class="card-block">
+          <br />
+          <h6 class="card-title"><em>Volvo FM 370</em></h6>
+          <img src="./assets/imagens/caminhoes/caminhao4.jpg" class="card-img-top img-fluid w-100" />
+          <p class="card-text small">
+             <b>Modelo:</b> 
+             <br />
+             <b>Ano/modelo: </b>2011/2012
+             <br />
+             <b>Preço: </b>$190.000,00
+             <br />
+             <b>Cidade/Estado: </b>Porto Alegre, RS
+             <br />
+             Anúncio de Revenda
+          </p>
+          <a href="#" routerLink="/venda_detalhe" class="btn btn-outline-success">Detalhes</a>
+          <br /><br />    
+       </div>
+       <div class="card-footer text-muted small">
+          Publicado há 2 dias
+       </div>
+    </div>
+ </div>
+   <div class="col-sm-4">
+      <div class="card text-center">
+         <div class="card-header">
+            Publicado por Lian Rolim
+         </div>
+         <div class="card-block">
+            <br />
+            <h6 class="card-title"><em>Volvo FM 370</em></h6>
+            <img src="./assets/imagens/caminhoes/caminhao4.jpg" class="card-img-top img-fluid w-100" />
+            <p class="card-text small">
+               <b>Modelo:</b> 
+               <br />
+               <b>Ano/modelo: </b>2011/2012
+               <br />
+               <b>Preço: </b>$190.000,00
+               <br />
+               <b>Cidade/Estado: </b>Porto Alegre, RS
+               <br />
+               Anúncio de Revenda
+            </p>
+            <a href="#" routerLink="/venda_detalhe" class="btn btn-outline-success">Detalhes</a>
+            <br /><br />    
+         </div>
+         <div class="card-footer text-muted small">
+            Publicado há 2 dias
+         </div>
+      </div>
+   </div>
+</div>
+<br />
+<div class="row">
+<div class="col-sm-4">
+   <div class="card text-center">
+      <div class="card-header">
+         Publicado por Lian Rolim
+      </div>
+      <div class="card-block">
+          <br />
+          <h6 class="card-title"><em>Volvo FM 370</em></h6>
+          <img src="./assets/imagens/caminhoes/caminhao4.jpg" class="card-img-top img-fluid w-100" />
+          <p class="card-text small">
+             <b>Modelo:</b> 
+             <br />
+             <b>Ano/modelo: </b>2011/2012
+             <br />
+             <b>Preço: </b>$190.000,00
+             <br />
+             <b>Cidade/Estado: </b>Porto Alegre, RS
+             <br />
+             Anúncio de Revenda
+          </p>
+          <a href="#" routerLink="/venda_detalhe" class="btn btn-outline-success">Detalhes</a>
+          <br /><br />    
+       </div>
+      <div class="card-footer text-muted small">
+         Publicado há 2 dias
+      </div>
+   </div>
+</div>
+<div class="col-sm-4">
+    <div class="card text-center">
+       <div class="card-header">
+          Publicado por Lian Rolim
+       </div>
+       <div class="card-block">
+          <br />
+          <h6 class="card-title"><em>Volvo FM 370</em></h6>
+          <img src="./assets/imagens/caminhoes/caminhao4.jpg" class="card-img-top img-fluid w-100" />
+          <p class="card-text small">
+             <b>Modelo:</b> 
+             <br />
+             <b>Ano/modelo: </b>2011/2012
+             <br />
+             <b>Preço: </b>$190.000,00
+             <br />
+             <b>Cidade/Estado: </b>Porto Alegre, RS
+             <br />
+             Anúncio de Revenda
+          </p>
+          <a href="#" routerLink="/venda_detalhe" class="btn btn-outline-success">Detalhes</a>
+          <br /><br />    
+       </div>
+       <div class="card-footer text-muted small">
+          Publicado há 2 dias
+       </div>
+    </div>
+ </div>
+<div class="col-sm-4">
+   <div class="card text-center">
+      <div class="card-header">
+         Publicado por Lian Rolim
+      </div>
+      <div class="card-block">
+          <br />
+          <h6 class="card-title"><em>Volvo FM 370</em></h6>
+          <img src="./assets/imagens/caminhoes/caminhao4.jpg" class="card-img-top img-fluid w-100" />
+          <p class="card-text small">
+             <b>Modelo:</b> 
+             <br />
+             <b>Ano/modelo: </b>2011/2012
+             <br />
+             <b>Preço: </b>$190.000,00
+             <br />
+             <b>Cidade/Estado: </b>Porto Alegre, RS
+             <br />
+             Anúncio de Revenda
+          </p>
+          <a href="#" routerLink="/venda_detalhe" class="btn btn-outline-success">Detalhes</a>
+          <br /><br />    
+       </div>
+      <div class="card-footer text-muted small">
+         Publicado há 2 dias
+      </div>
+   </div>
+</div>
+<br />
+<br /> -->
+

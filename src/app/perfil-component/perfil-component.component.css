@@ -1,0 +1,36 @@
+.intro-header{
+    background-color: #3c763d;
+    background: linear-gradient(135deg,#3c763d,#7de87d);
+    background-image: linear-gradient(135deg, rgb(60, 118, 61), rgb(125, 232, 125));
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: #3c763d;
+    margin-top: 32px;
+    color: #fff;
+}
+
+.jumbotron-fluid {
+    padding-right: 0;
+    padding-left: 0;
+    border-radius: 0;
+}
+
+.jumbotron {
+    padding: 4rem 2rem;
+}
+
+.jumbotron {
+    padding: 2rem 1rem;
+    margin-bottom: 1rem;
+    background-color: #e9ecef;
+    border-radius: .3rem;
+}
+
+.sideMenu{
+    border: 2px solid #EEE9E9;
+    border-radius: 5px;
+}

@@ -1,0 +1,266 @@
+<ng-progress [speed]="'500'" [color]="'#2DBE61'"></ng-progress>
+<form #formulario="ngForm">
+        <div class="text-center">
+           <img src="./assets/imagens/DriveTruckIcon.png" width = "150px" class="img-responsive" style="margin:0 auto;" />
+           <br /><br /><small class="text-muted">Você está a cinco minutos de anunciar o seu veículo para todo o Brasil</small>
+        </div>
+        <hr>
+        <div class="row">
+           <div class="col-6">
+              <div class="form-group">
+                 <label>Nome</label>
+                 <input [(ngModel)]="venda.nomeVeiculo" name="nomeVeiculo" aria-describedby="nomeVeiculo" type="text" class="form-control" placeholder="ex: Volvo FH" required>
+              </div>
+           </div>
+           <div class="col-6">
+              <div class="form-group">
+                 <label>Modelo</label>
+                 <input [(ngModel)]="venda.modelo" name="modeloVeiculo" aria-describedby="modeloVeiculo" type="text" class="form-control" placeholder="ex: Volvo FH12 440" required>
+              </div>
+           </div>
+        </div>
+        <div class="row">
+           <div class="col-4">
+              <div class="form-group">
+                 <label>Ano/Modelo</label>
+                 <select [(ngModel)]="venda.anoModelo" aria-describedby="anoModelo" class="form-control" name="anoModelo" required>
+                 <option>2017/2017</option>
+                 <option>2016/2017</option>
+                 <option>2016/2016</option>
+                 <option>2015/2016</option>
+                 <option>2015/2015</option>
+                 <option>2014/2015</option>
+                 <option>2014/2014</option>
+                 <option>2013/2014</option>
+                 <option>2013/2013</option>
+                 <option>2012/2013</option>
+                 <option>2012/2012</option>
+                 <option>2011/2012</option>
+                 <option>2011/2011</option>
+                 <option>2010/2011</option>
+                 <option>2010/2010</option>
+                 <option>2009/2010</option>
+                 <option>2009/2009</option>
+                 <option>2008/2009</option>
+                 <option>2008/2008</option>
+                 <option>2007/2008</option>
+                 <option>2007/2007</option>
+                 <option>2006/2007</option>
+                 <option>2006/2006</option>
+                 </select>
+              </div>
+           </div>
+           <div class="col-6">
+              <div class="form-group">
+                 <label>Valor</label>
+                 <input [(ngModel)]="venda.valor" name="valor" aria-describedby="valor" type="text" class="form-control" placeholder="ex: 190.000,00" required>
+              </div>
+           </div>
+           <div class="col-2">
+              <div class="form-group">
+                 <label>Cidade/ES</label>
+                 <input [(ngModel)]="venda.cidadeEstado" name="cidade" aria-describedby="cidade" type="text" class="form-control" placeholder="ex: Porto Alegre, RS" required>
+              </div>
+           </div>
+        </div>
+        <div class="row">
+           <div class="col-12">
+              <div class="form-group">
+                 <label>Tipo de anuncio</label>
+                 <select [(ngModel)]="venda.tipoAnuncio" class="form-control" name="tpoAnunc" aria-describedby="tpoAnunc" required>
+                 <option>Particular</option>
+                 <option>Revenda</option>
+                 </select>
+              </div>
+           </div>
+        </div>
+        <div class="row">
+           <div class="col-12">
+              <div class="form-group">
+                 <label>Descrição</label>
+                 <textarea [(ngModel)]="venda.descricao" class="form-control" name="descricao" rows="5" placeholder="Insira aqui a sua descrição referente ao veículo"></textarea>
+              </div>
+           </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+               <image-upload (removed)="onRemoved($event)"
+                             (uploadFinished)="imageFinishedUploading($event)"
+                             (uploadStateChanged)="onUploadStateChanged($event)"
+                              dropBoxMessage="Limite máximo 10 imagens"
+                             [max]="10" [extensions]="['jpeg','png']"
+                              buttonCaption="Imagens"
+                              clearButtonCaption="Limpar">
+               </image-upload>
+            </div>
+        </div>
+        <br />
+        <div class="text-center"><small class="text-muted">Preencha os dados da ficha técnica do veiculo</small></div>
+        <hr>
+        <div class="row">
+           <div class="col-sm-6">
+              <div class="form-group">
+                 <label>Marca do motor</label>
+                 <input type="text" [(ngModel)]="fichaTecnica.marcaMotor" name="marcaMotor" class="form-control" 
+                 placeholder="ex: Scania">
+              </div>
+           </div>
+           <div class="col-sm-6">
+              <div class="form-group">
+                 <label>Marca do veiculo</label>
+                 <input [(ngModel)]="fichaTecnica.marca" type="text" name="marcaVeiculo" class="form-control" 
+                 placeholder="ex: Mercedes">
+              </div>
+           </div>
+        </div>
+        <div class="row">
+           <div class="col-sm-6">
+              <div class="form-group">
+                 <label>Km's Rodados</label>
+                 <input [(ngModel)]="fichaTecnica.quilometros" type="text" name="kmsRodados" class="form-control" 
+                 placeholder="ex: 120.000">
+              </div>
+           </div>
+           <div class="col-sm-6">
+              <div class="form-group">
+                 <label>Capacidade de carga</label>
+                 <input [(ngModel)]="fichaTecnica.capacidadeCarga" type="text" name="capacidadeCarga" class="form-control" 
+                 placeholder="ex: 56000 kg">
+              </div>
+           </div>
+        </div>
+        <br />
+        <div class="text-center"><small class="text-muted">Preencha as informações adicionais do veiculo</small></div>
+        <hr>
+        <div class="row">
+           <div class="col-sm-6">
+              <div class="form-group">
+                 <label>Potência</label>
+                 <input [(ngModel)]="adicionais.potencia" type="text" name="potencia" class="form-control" 
+                 placeholder="ex: 370W">
+              </div>
+           </div>
+           <div class="col-sm-6">
+              <div class="form-group">
+                 <label>Direção</label>
+                 <input [(ngModel)]="adicionais.direcao" type="text" name="tpoDirecao" class="form-control" 
+                 placeholder="ex: Hidráulica">
+              </div>
+           </div>
+        </div>
+        <div class="row">
+           <div class="col-sm-6">
+              <div class="form-group">
+                 <label>Controle de tração</label>
+                 <input [(ngModel)]="adicionais.controleTracao" type="text" name="tpoTracao" class="form-control" 
+                 placeholder="ex: 6x2">
+              </div>
+           </div>
+           <div class="col-sm-6">
+              <div class="form-group">
+                 <label>Transmissão</label>
+                 <input [(ngModel)]="adicionais.transmissao" type="text" name="tpoTransmissao" class="form-control" 
+                 placeholder="ex: Manual, Automatico">
+              </div>
+           </div>
+        </div>
+        <div class="row">
+           <div class="col-sm-12">
+              <div class="form-group">
+                 <label>Unico dono</label>
+                 <select [(ngModel)]="adicionais.unicoDono" class="form-control" name="unicoDono">
+                 <option>Sim</option>
+                 <option>Não</option>
+                 </select>
+              </div>
+           </div>
+        </div>
+        <br />
+        <div class="text-center"><small class="text-muted">Preencha os equipamentos que o veiculo possui</small></div>
+        <hr>
+        <div class="row">
+           <div class="col-sm-6" >
+              <div class="form-group">
+                 <label>Equipamento</label>
+                 <input type="text" name="equipamento" class="form-control" 
+                    placeholder="ex: Sistema de freios" #inputEquipamento>
+              </div>
+              <button type="button" (click)="addItemAdicional(inputEquipamento.value)" class="btn btn-outline-primary">Add item</button> 
+           </div>
+           <div class="col-sm-6" *ngIf="itemsAdicionais?.length > 0">
+              <ol class="custom-counter">
+                 <small class="text-muted">items adicionados</small>
+                 <li *ngFor="let itemEquip of itemsAdicionais; let i = index" >
+                    {{ itemEquip }}
+                 </li>
+              </ol>
+           </div>
+        </div>
+        <br />
+        <div class="text-center"><small class="text-muted">Preencha os itens de segurança que o veiculo possui</small></div>
+        <hr>
+        <div class="row">
+           <div class="col-sm-6" >
+              <div class="form-group">
+                 <label>Segurança</label>
+                 <input type="text" name="itemSeguranca" class="form-control" 
+                    placeholder="ex: Sistema de freios" #inputSeguranca>
+              </div>
+              <button type="button" (click)="addItemSeguranca(inputSeguranca.value)" class="btn btn-outline-primary">Add item</button> 
+           </div>
+           <div class="col-sm-6" *ngIf="itemsSeguranca?.length > 0">
+              <ol class="custom-counter">
+                 <small class="text-muted">items adicionados</small>
+                 <li *ngFor="let itemSegu of itemsSeguranca; let i = index" >
+                    {{ itemSegu }}
+                 </li>
+              </ol>
+           </div>
+        </div>
+        <br />
+        <div class="text-center"><small class="text-muted">Preencha os itens de conforto que o veiculo possui</small></div>
+        <hr>
+        <div class="row">
+           <div class="col-sm-6" >
+              <div class="form-group">
+                 <label>Conforto</label>
+                 <input type="text" name="conforto" class="form-control" 
+                 placeholder="ex: Sistema de freios" #inputConforto>
+              </div>
+              <button type="button" (click)="addItemConforto(inputConforto.value)" class="btn btn-outline-primary">Add item</button> 
+           </div>
+           <div class="col-sm-6" *ngIf="itemsConforto?.length > 0">
+              <ol class="custom-counter">
+                 <small class="text-muted">items adicionados</small>
+                 <li *ngFor="let itemConforto of itemsConforto; let i = index" >
+                    {{ itemConforto }}
+                 </li>
+              </ol>
+           </div>
+        </div>
+        <br />
+        <div class="text-center"><small class="text-muted">Preencha os itens de som que o veiculo possui</small></div>
+        <hr>
+        <div class="row">
+           <div class="col-sm-6" >
+              <div class="form-group">
+                 <label>Som</label>
+                 <input [(ngModel)]="limpaCampo" type="text" name="som" class="form-control" 
+                 placeholder="ex: Sistema de freios" #inputSom>
+              </div>
+              <button type="button" (click)="addItemSom(inputSom.value)" class="btn btn-outline-primary">Add item</button> 
+           </div>
+           <div class="col-sm-6" *ngIf="itemsSom?.length > 0">
+              <ol class="custom-counter">
+                 <small class="text-muted">items adicionados</small>
+                 <li *ngFor="let itemSom of itemsSom; let i = index" >
+                    {{ itemSom }}
+                 </li>
+              </ol>
+           </div>
+        </div>
+        <br />
+        <!-- <button (click)="cadastrarNovoAnuncio()" type="submit" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" class="btn btn-lg btn-block btn-outline-success my-5 my-sm-0">Anunciar veiculo</button> -->
+        <button [disabled]="!formulario.valid" (click)="cadastrarNovoAnuncio()" type="submit" class="btn btn-lg btn-block btn-outline-success my-5 my-sm-0">Anunciar veiculo</button>
+</form>
+<br />

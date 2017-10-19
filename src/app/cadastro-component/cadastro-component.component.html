@@ -1,0 +1,94 @@
+<form #formulario="ngForm">
+        <div class="text-center">
+           <img src="./assets/imagens/DriveTruckIcon.png" width = "150px" class="img-responsive" style="margin:0 auto;" />
+           <br /><br /><small class="text-muted">Preencha os dados abaixo para realizar o seu cadastro no DriveTruck</small>
+        </div>
+        <hr>
+        <div class="form-group">
+           <label for="exampleInputEmail1">Email</label>
+           <input [(ngModel)]="cadastro.email" name="um" type="email" class="form-control" 
+           aria-describedby="emailHelp" placeholder="Insira seu email" required email>
+           <small id="emailHelp" class="form-text text-muted">Este será seu usuário de acesso</small>
+        </div>
+        <div class="form-group">
+           <label for="exampleInputPassword1">Senha</label>
+           <input [(ngModel)]="cadastro.senha" type="password" name="dois" class="form-control" 
+           placeholder="Escolha uma senha segura" required>
+           <small id="emailHelp" class="form-text text-muted">Esta será sua senha de acesso</small>
+        </div>
+        <div class="form-group">
+           <label for="exampleSelect1">Tipo de pessoa</label>
+           <select class="form-control" [(ngModel)]="tpPess" name="tres" id="exampleSelect1" required>
+           <option>Fisica</option>
+           <option>Jurídica</option>
+           </select>
+        </div>
+        <div class="form-group" *ngIf="tpPess == 'Fisica'">
+           <label for="exampleInputPassword1">Primeiro Nome</label>
+           <input [(ngModel)]="cadastro.primeiroNome" type="text" name="quatro" class="form-control"
+           placeholder="Lian" required>
+        </div>
+        <div class="form-group" *ngIf="tpPess == 'Fisica'">
+           <label for="exampleInputPassword1">Segundo Nome</label>
+           <input [(ngModel)]="cadastro.segundoNome" type="text" name="cinco" class="form-control" 
+           placeholder="Rolim" required>
+        </div>
+        <div class="form-group" *ngIf="tpPess == 'Jurídica'">
+           <label for="exampleInputPassword1">Nome da empresa</label>
+           <input [(ngModel)]="cadastro.nomeEmpresa" type="text" name="seis" class="form-control"  
+           placeholder="Transportes Rolim" required>
+        </div>
+        <div class="form-group" *ngIf="tpPess == 'Fisica'">
+           <label for="exampleInputPassword1">Data nascimento</label><br />
+           <input class="form-control"  [(ngModel)]="cadastro.dataNascimento" name="sete" type="date" 
+           value="1991-02-08" id="example-date-input" required>
+        </div>
+        <div class="form-group">
+           <label for="exampleSelect1">Selecione seu perfil</label>
+           <select class="form-control" [(ngModel)]="cadastro.perfil" name="oito" id="exampleSelect1" required>
+           <option>Anunciante de vagas</option>
+           <option>Anunciante de venda</option>
+           <option *ngIf="tpPess == 'Fisica'">Candidato</option>
+           </select>
+           <small *ngIf="cadastro.perfil == 'Candidato'" id="emailHelp" class="form-text text-muted">Este perfil é o indicado para quem irá se candidatar a vagas de motorista</small>
+           <small *ngIf="cadastro.perfil == 'Anunciante de vagas'" id="emailHelp" class="form-text text-muted">Este perfil é o indicado para quem irá publicar vagas de motorista</small>
+           <small *ngIf="cadastro.perfil == 'Anunciante de venda'" id="emailHelp" class="form-text text-muted">Este perfil é o indicado para quem irá publicar anuncios de caminhões à venda</small>
+        </div>
+        <div class="text-center">
+           <fieldset class="form-group" *ngIf="tpPess == 'Fisica'">
+              <label for="sexo">Sexo</label>
+              <div class="form-check">
+                 <label class="form-check-label">
+                 <input [(ngModel)]="cadastro.sexo" type="radio" name="onze" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="M" checked>
+                 Masculino &nbsp;&nbsp;
+                 </label>
+                 <label class="form-check-label">
+                 <input [(ngModel)]="cadastro.sexo" type="radio" name="doze" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="F" checked>
+                 Feminino
+                 </label>
+              </div>
+           </fieldset>
+           <label class="custom-file" >
+           <input accept="image/*" (change)="changeListener($event)" name="treze" type="file" id="file" class="custom-file-input">
+           <span class="custom-file-control">Foto do perfil</span>
+           </label> 
+           <!-- parte do candidato... perfil, experiencia prof e etc...  -->
+           <br />
+           <div class="candidato" *ngIf="cadastro.perfil == 'Candidato'">
+              <br />
+              <hr>
+              <small class="text-muted">Dados profissionais</small><br /><br />
+              <div class="form-group">
+                 <label for="exampleInputPassword1">Tipo da sua CNH</label>
+                 <input [(ngModel)]="cadastro.tpoCnh" type="text" name="nove" class="form-control" id="exampleInputPassword1" placeholder="ex: A, AB, D">
+              </div>
+              <div class="form-group">
+                 <label for="exampleTextarea">Experiência profissional</label>
+                 <textarea class="form-control" id="exampleTextarea" name="dez" rows="3" placeholder="Conte aos outros um pouquinho da sua experiência profissional"></textarea>
+              </div>
+           </div>
+        </div>
+        <br />
+        <button [disabled]="!formulario.valid" (click)="cadastrarNovoUsuario()" type="submit" class="btn btn-lg btn-block btn-outline-success my-5 my-sm-0">Cadastrar</button>
+</form>
+<br />
